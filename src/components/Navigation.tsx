@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const location = useLocation();
@@ -11,7 +12,7 @@ const Navigation = () => {
     { path: "/", label: "Home" },
     { path: "/projects", label: "Projects" },
     { path: "/skills", label: "Skills" },
-    { path: "/articles", label: "Articles" },
+    { path: "/profiles", label: "Profiles" },
     { path: "/contact", label: "Contact" },
   ];
 
@@ -27,44 +28,50 @@ const Navigation = () => {
           <Link to="/">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold gradient-text"
+              className="text-2xl font-bold text-primary"
             >
-              Portfolio
+              Rijas Mohamed
             </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex gap-8">
-            {navItems.map((item) => (
-              <Link key={item.path} to={item.path}>
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  className={`relative ${
-                    location.pathname === item.path
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {item.label}
-                  {location.pathname === item.path && (
-                    <motion.div
-                      layoutId="activeNav"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </motion.div>
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center gap-6">
+            <div className="flex gap-6">
+              {navItems.map((item) => (
+                <Link key={item.path} to={item.path}>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    className={`relative ${
+                      location.pathname === item.path
+                        ? "text-primary font-medium"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {item.label}
+                    {location.pathname === item.path && (
+                      <motion.div
+                        layoutId="activeNav"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </motion.div>
+                </Link>
+              ))}
+            </div>
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-foreground"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-foreground"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
