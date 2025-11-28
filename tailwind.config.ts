@@ -57,21 +57,6 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        neon: {
-          cyan: "hsl(var(--neon-cyan))",
-          blue: "hsl(var(--neon-blue))",
-          pink: "hsl(var(--neon-pink))",
-        },
-      },
-      backgroundImage: {
-        'gradient-hero': 'var(--gradient-hero)',
-        'gradient-card': 'var(--gradient-card)',
-        'gradient-neon': 'var(--gradient-neon)',
-      },
-      boxShadow: {
-        'glow-cyan': 'var(--shadow-glow-cyan)',
-        'glow-blue': 'var(--shadow-glow-blue)',
-        'card': 'var(--shadow-card)',
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Download, FileText, Briefcase, GraduationCap, Award } from "lucide-react";
+import { Download, FileText, Briefcase, GraduationCap, Award, Users } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 
@@ -17,13 +17,13 @@ const Resume = () => {
             >
               <FileText className="w-16 h-16 text-primary" />
             </motion.div>
-            <h1 className="text-5xl md:text-6xl font-bold gradient-text mb-4">
-              My Resume
+            <h1 className="text-5xl md:text-6xl font-bold mb-4">
+              My <span className="text-primary">Resume</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
               Download my complete professional resume
             </p>
-            <Button size="lg" className="glow-cyan group">
+            <Button size="lg" className="group">
               <Download className="mr-2 group-hover:animate-bounce" size={20} />
               Download PDF
             </Button>
@@ -31,37 +31,74 @@ const Resume = () => {
         </AnimatedSection>
 
         <div className="max-w-4xl mx-auto space-y-12">
-          {/* Experience Section */}
+          {/* Summary */}
+          <AnimatedSection delay={0.1}>
+            <div className="bg-card p-8 rounded-xl border border-border shadow-lg">
+              <h2 className="text-3xl font-bold mb-4 text-primary">Summary</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Third-year IT undergraduate with a strong interest in software engineering and hands-on 
+                experience from multiple projects. Actively seeking a software engineering internship to 
+                apply my knowledge, contribute to real-world development teams, and gain valuable industry 
+                experience while continuing to learn and grow.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          {/* Education */}
           <AnimatedSection delay={0.2}>
-            <div className="bg-card p-8 rounded-lg border border-border shadow-card">
+            <div className="bg-card p-8 rounded-xl border border-border shadow-lg">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <GraduationCap className="w-6 h-6 text-primary" />
+                </div>
+                <h2 className="text-3xl font-bold text-primary">Education</h2>
+              </div>
+              
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="border-l-2 border-primary pl-6"
+              >
+                <h3 className="text-xl font-bold">Bachelor of Information Communication Technology (Hons)</h3>
+                <p className="text-primary font-medium">University of Jaffna (Vavuniya Campus)</p>
+                <p className="text-sm text-muted-foreground mb-2">August 2022 – Present</p>
+                <p className="text-muted-foreground">Currently in third year, focusing on software engineering and web development</p>
+              </motion.div>
+            </div>
+          </AnimatedSection>
+
+          {/* Projects */}
+          <AnimatedSection delay={0.3}>
+            <div className="bg-card p-8 rounded-xl border border-border shadow-lg">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 bg-primary/10 rounded-lg">
                   <Briefcase className="w-6 h-6 text-primary" />
                 </div>
-                <h2 className="text-3xl font-bold gradient-text">Experience</h2>
+                <h2 className="text-3xl font-bold text-primary">Projects</h2>
               </div>
               
               <div className="space-y-8">
                 {[
                   {
-                    title: "Senior Full Stack Developer",
-                    company: "Tech Corp",
-                    period: "2022 - Present",
-                    description: "Leading development of enterprise web applications using React, Node.js, and cloud technologies.",
+                    title: "E-Commerce Website (MERN Stack)",
+                    points: [
+                      "Designed and developed a fully functional e-commerce web application with user authentication, product listings, and shopping cart",
+                      "Implemented secure RESTful APIs using Node.js and Express.js",
+                      "Integrated MongoDB for product and order management",
+                      "Tools Used: MongoDB, Express.js, React.js, Node.js, Bootstrap"
+                    ]
                   },
                   {
-                    title: "Frontend Developer",
-                    company: "Digital Agency",
-                    period: "2020 - 2022",
-                    description: "Built responsive, accessible web applications for clients across various industries.",
-                  },
-                  {
-                    title: "Junior Developer",
-                    company: "Startup Inc",
-                    period: "2019 - 2020",
-                    description: "Contributed to the development of a SaaS platform serving thousands of users.",
-                  },
-                ].map((job, index) => (
+                    title: "Hotel Management System (PHP & MySQL)",
+                    points: [
+                      "Built a full-stack hotel management system with room, guest, and booking modules",
+                      "Designed a responsive Bootstrap UI and real-time Chart.js dashboard",
+                      "Optimized MySQL database and deployed on XAMPP for demo and testing",
+                      "Tools Used: PHP, MySQL, HTML, CSS, JavaScript"
+                    ]
+                  }
+                ].map((project, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -70,68 +107,35 @@ const Resume = () => {
                     transition={{ delay: index * 0.1 }}
                     className="border-l-2 border-primary pl-6 pb-6 last:pb-0"
                   >
-                    <h3 className="text-xl font-bold text-foreground">{job.title}</h3>
-                    <p className="text-primary font-medium">{job.company}</p>
-                    <p className="text-sm text-muted-foreground mb-2">{job.period}</p>
-                    <p className="text-muted-foreground">{job.description}</p>
+                    <h3 className="text-xl font-bold mb-3">{project.title}</h3>
+                    <ul className="space-y-2">
+                      {project.points.map((point, i) => (
+                        <li key={i} className="flex items-start gap-2 text-muted-foreground">
+                          <span className="text-primary mt-1">▪</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </motion.div>
                 ))}
               </div>
             </div>
           </AnimatedSection>
 
-          {/* Education Section */}
-          <AnimatedSection delay={0.3}>
-            <div className="bg-card p-8 rounded-lg border border-border shadow-card">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <GraduationCap className="w-6 h-6 text-primary" />
-                </div>
-                <h2 className="text-3xl font-bold gradient-text">Education</h2>
-              </div>
-              
-              <div className="space-y-6">
-                {[
-                  {
-                    degree: "Bachelor of Science in Computer Science",
-                    school: "University Name",
-                    period: "2015 - 2019",
-                    description: "Graduated with honors, specializing in web technologies and software engineering.",
-                  },
-                ].map((edu, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="border-l-2 border-primary pl-6"
-                  >
-                    <h3 className="text-xl font-bold text-foreground">{edu.degree}</h3>
-                    <p className="text-primary font-medium">{edu.school}</p>
-                    <p className="text-sm text-muted-foreground mb-2">{edu.period}</p>
-                    <p className="text-muted-foreground">{edu.description}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </AnimatedSection>
-
-          {/* Certifications Section */}
+          {/* Certifications */}
           <AnimatedSection delay={0.4}>
-            <div className="bg-card p-8 rounded-lg border border-border shadow-card">
+            <div className="bg-card p-8 rounded-xl border border-border shadow-lg">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 bg-primary/10 rounded-lg">
                   <Award className="w-6 h-6 text-primary" />
                 </div>
-                <h2 className="text-3xl font-bold gradient-text">Certifications</h2>
+                <h2 className="text-3xl font-bold text-primary">Certifications</h2>
               </div>
               
               <div className="grid md:grid-cols-2 gap-4">
                 {[
-                  "AWS Certified Developer",
-                  "React Advanced Certification",
-                  "TypeScript Professional",
-                  "UI/UX Design Fundamentals",
+                  "Responsive Web Design – FreeCodeCamp",
+                  "Programming for Everybody (Getting Started with Python)",
                 ].map((cert, index) => (
                   <motion.div
                     key={index}
@@ -139,12 +143,59 @@ const Resume = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.02 }}
                     className="bg-muted p-4 rounded-lg border border-border"
                   >
-                    <p className="text-foreground font-medium">{cert}</p>
+                    <p className="font-medium">{cert}</p>
                   </motion.div>
                 ))}
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Volunteering */}
+          <AnimatedSection delay={0.5}>
+            <div className="bg-card p-8 rounded-xl border border-border shadow-lg">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <Users className="w-6 h-6 text-primary" />
+                </div>
+                <h2 className="text-3xl font-bold text-primary">Volunteering</h2>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-4">
+                {[
+                  "Mission Rise Up Association: Secretary, Treasurer",
+                  "AIESEC: Team Leader (Summer Term)",
+                  "Muslim Majlis, University of Jaffna: 2nd Year Coordinator & Member",
+                  "IEEE Student Branch, University of Vavuniya: Student Member",
+                  "Yarl IT Hub: Volunteer"
+                ].map((activity, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
+                    className="flex items-start gap-2 text-muted-foreground"
+                  >
+                    <span className="text-primary mt-1">•</span>
+                    <span>{activity}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Contact Info */}
+          <AnimatedSection delay={0.6}>
+            <div className="bg-card p-8 rounded-xl border border-border shadow-lg text-center">
+              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+              <div className="space-y-2 text-muted-foreground">
+                <p>📧 rijas2244@gmail.com</p>
+                <p>📱 +94 71 68 18 679</p>
+                <p>🔗 linkedin.com/in/rijas-mohamed</p>
+                <p>💻 github.com/Rijas-Mohamed</p>
               </div>
             </div>
           </AnimatedSection>
