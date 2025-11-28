@@ -2,19 +2,12 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { navigationLinks } from "@/content/site-data";
 import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
-
-  const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/projects", label: "Projects" },
-    { path: "/skills", label: "Skills" },
-    { path: "/profiles", label: "Profiles" },
-    { path: "/contact", label: "Contact" },
-  ];
 
   return (
     <>
@@ -37,7 +30,7 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             <div className="flex gap-6">
-              {navItems.map((item) => (
+              {navigationLinks.map((item) => (
                 <Link key={item.path} to={item.path}>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
@@ -83,7 +76,7 @@ const Navigation = () => {
             className="md:hidden bg-card border-t border-border"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              {navItems.map((item) => (
+              {navigationLinks.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}

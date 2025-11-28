@@ -2,27 +2,7 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
-
-const profiles = [
-  {
-    name: "GitHub",
-    username: "@Rijas-Mohamed",
-    stats: "Active repositories",
-    description: "View my projects and contributions",
-    color: "from-gray-700 to-gray-900",
-    link: "https://github.com/Rijas-Mohamed",
-    icon: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-  },
-  {
-    name: "LinkedIn",
-    username: "@rijas-mohamed",
-    stats: "Professional network",
-    description: "Connect with me professionally",
-    color: "from-blue-600 to-blue-800",
-    link: "https://linkedin.com/in/rijas-mohamed",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
-  },
-];
+import { profileCards } from "@/content/site-data";
 
 const CodingProfiles = () => {
   return (
@@ -40,7 +20,7 @@ const CodingProfiles = () => {
         </AnimatedSection>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {profiles.map((profile, index) => (
+          {profileCards.map((profile, index) => (
             <AnimatedSection key={index} delay={index * 0.1}>
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}

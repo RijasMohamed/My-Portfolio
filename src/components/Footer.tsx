@@ -1,14 +1,8 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { navigationLinks, socialLinks } from "@/content/site-data";
 
 const Footer = () => {
-  const socialLinks = [
-    { icon: Github, href: "https://github.com/Rijas-Mohamed", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com/in/rijas-mohamed", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:rijas2244@gmail.com", label: "Email" },
-  ];
-
   return (
     <footer className="relative mt-20 border-t border-border bg-card">
       <div className="container mx-auto px-4 py-12">
@@ -25,19 +19,13 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {[
-                { name: "Home", path: "/" },
-                { name: "Projects", path: "/projects" },
-                { name: "Skills", path: "/skills" },
-                { name: "Resume", path: "/resume" },
-                { name: "Contact", path: "/contact" },
-              ].map((link) => (
-                <li key={link.name}>
+              {navigationLinks.map((link) => (
+                <li key={link.path}>
                   <Link
                     to={link.path}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {link.name}
+                    {link.label}
                   </Link>
                 </li>
               ))}

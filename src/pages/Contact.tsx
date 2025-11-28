@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
+import { Send } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { contactInfo, socialLinks } from "@/content/site-data";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -38,39 +39,7 @@ const Contact = () => {
     setFormData({ name: "", email: "", message: "" });
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "rijas2244@gmail.com",
-      href: "mailto:rijas2244@gmail.com",
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+94 71 68 18 679",
-      href: "tel:+94716818679",
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Vavuniya, Sri Lanka",
-      href: "#",
-    },
-  ];
-
-  const socialLinks = [
-    {
-      icon: Github,
-      label: "GitHub",
-      href: "https://github.com/Rijas-Mohamed",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/rijas-mohamed",
-    },
-  ];
+  const profileLinks = socialLinks.filter((link) => link.label !== "Email");
 
   return (
     <div className="min-h-screen py-20">
@@ -176,7 +145,7 @@ const Contact = () => {
                   Connect on <span className="text-primary">Social Media</span>
                 </h2>
                 <div className="flex gap-4">
-                  {socialLinks.map((social, index) => (
+                  {profileLinks.map((social, index) => (
                     <motion.a
                       key={index}
                       href={social.href}

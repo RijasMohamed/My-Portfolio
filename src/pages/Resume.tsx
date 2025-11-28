@@ -2,6 +2,12 @@ import { motion } from "framer-motion";
 import { Download, FileText, Briefcase, GraduationCap, Award, Users } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
+import {
+  certifications,
+  resumeContactDetails,
+  resumeProjects,
+  volunteeringHighlights,
+} from "@/content/site-data";
 
 const Resume = () => {
   return (
@@ -79,26 +85,7 @@ const Resume = () => {
               </div>
               
               <div className="space-y-8">
-                {[
-                  {
-                    title: "E-Commerce Website (MERN Stack)",
-                    points: [
-                      "Designed and developed a fully functional e-commerce web application with user authentication, product listings, and shopping cart",
-                      "Implemented secure RESTful APIs using Node.js and Express.js",
-                      "Integrated MongoDB for product and order management",
-                      "Tools Used: MongoDB, Express.js, React.js, Node.js, Bootstrap"
-                    ]
-                  },
-                  {
-                    title: "Hotel Management System (PHP & MySQL)",
-                    points: [
-                      "Built a full-stack hotel management system with room, guest, and booking modules",
-                      "Designed a responsive Bootstrap UI and real-time Chart.js dashboard",
-                      "Optimized MySQL database and deployed on XAMPP for demo and testing",
-                      "Tools Used: PHP, MySQL, HTML, CSS, JavaScript"
-                    ]
-                  }
-                ].map((project, index) => (
+                {resumeProjects.map((project, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -133,10 +120,7 @@ const Resume = () => {
               </div>
               
               <div className="grid md:grid-cols-2 gap-4">
-                {[
-                  "Responsive Web Design – FreeCodeCamp",
-                  "Programming for Everybody (Getting Started with Python)",
-                ].map((cert, index) => (
+                {certifications.map((cert, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -146,7 +130,7 @@ const Resume = () => {
                     whileHover={{ scale: 1.02 }}
                     className="bg-muted p-4 rounded-lg border border-border"
                   >
-                    <p className="font-medium">{cert}</p>
+                    <p className="font-medium">{`${cert.title} – ${cert.issuer}`}</p>
                   </motion.div>
                 ))}
               </div>
@@ -164,13 +148,7 @@ const Resume = () => {
               </div>
               
               <div className="grid md:grid-cols-2 gap-4">
-                {[
-                  "Mission Rise Up Association: Secretary, Treasurer",
-                  "AIESEC: Team Leader (Summer Term)",
-                  "Muslim Majlis, University of Jaffna: 2nd Year Coordinator & Member",
-                  "IEEE Student Branch, University of Vavuniya: Student Member",
-                  "Yarl IT Hub: Volunteer"
-                ].map((activity, index) => (
+                {volunteeringHighlights.map((activity, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 10 }}
@@ -192,10 +170,17 @@ const Resume = () => {
             <div className="bg-card p-8 rounded-xl border border-border shadow-lg text-center">
               <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
               <div className="space-y-2 text-muted-foreground">
-                <p>📧 rijas2244@gmail.com</p>
-                <p>📱 +94 71 68 18 679</p>
-                <p>🔗 linkedin.com/in/rijas-mohamed</p>
-                <p>💻 github.com/Rijas-Mohamed</p>
+                {resumeContactDetails.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="block hover:text-primary transition-colors"
+                  >
+                    {item.display}
+                  </a>
+                ))}
               </div>
             </div>
           </AnimatedSection>

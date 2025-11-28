@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Download, Github, Linkedin, Mail, FileText } from "lucide-react";
+import { ArrowRight, Download, FileText } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
+import { heroStats, opportunityHighlights, socialLinks } from "@/content/site-data";
 
 const Hero = () => {
   return (
@@ -74,34 +75,20 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
             >
-              <motion.a
-                href="https://github.com/Rijas-Mohamed"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-3 border border-border rounded-lg text-muted-foreground hover:text-primary hover:border-primary transition-colors"
-              >
-                <Github size={24} />
-              </motion.a>
-              <motion.a
-                href="https://linkedin.com/in/rijas-mohamed"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-3 border border-border rounded-lg text-muted-foreground hover:text-primary hover:border-primary transition-colors"
-              >
-                <Linkedin size={24} />
-              </motion.a>
-              <motion.a
-                href="mailto:rijas2244@gmail.com"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-3 border border-border rounded-lg text-muted-foreground hover:text-primary hover:border-primary transition-colors"
-              >
-                <Mail size={24} />
-              </motion.a>
+              {socialLinks.map((link) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-3 border border-border rounded-lg text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                  aria-label={link.label}
+                >
+                  <link.icon size={24} />
+                </motion.a>
+              ))}
             </motion.div>
           </div>
 
@@ -126,18 +113,12 @@ const Hero = () => {
                 </div>
 
                 <div className="space-y-3 pt-4">
-                  <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 rounded-full bg-primary"></div>
-                    <span>Open to full-time internships</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 rounded-full bg-primary"></div>
-                    <span>Available immediately</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 rounded-full bg-primary"></div>
-                    <span>Remote or on-site</span>
-                  </div>
+                  {opportunityHighlights.map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-sm">
+                      <div className="w-2 h-2 rounded-full bg-primary"></div>
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -157,23 +138,7 @@ const Hero = () => {
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { 
-                  number: "2+", 
-                  label: "Years of Coding",
-                  description: "Building projects since 2022"
-                },
-                { 
-                  number: "5+", 
-                  label: "Projects Completed",
-                  description: "Full-stack web applications"
-                },
-                { 
-                  number: "Multiple", 
-                  label: "Certifications",
-                  description: "From FreeCodeCamp & more"
-                },
-              ].map((stat, i) => (
+              {heroStats.map((stat, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}

@@ -1,62 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
-import { Code, Database, Globe, Wrench } from "lucide-react";
-
-const skillCategories = [
-  {
-    title: "Programming Languages",
-    icon: Code,
-    skills: [
-      { name: "JavaScript", level: 85 },
-      { name: "Python", level: 80 },
-      { name: "PHP", level: 75 },
-      { name: "C++", level: 70 },
-      { name: "Java", level: 65 },
-    ],
-  },
-  {
-    title: "Frameworks & Libraries",
-    icon: Globe,
-    skills: [
-      { name: "React.js", level: 85 },
-      { name: "Node.js", level: 80 },
-      { name: "Express.js", level: 80 },
-      { name: "Bootstrap", level: 85 },
-    ],
-  },
-  {
-    title: "Databases",
-    icon: Database,
-    skills: [
-      { name: "MySQL", level: 85 },
-      { name: "MongoDB", level: 80 },
-    ],
-  },
-  {
-    title: "Tools & Platforms",
-    icon: Wrench,
-    skills: [
-      { name: "Git & GitHub", level: 85 },
-      { name: "Visual Studio Code", level: 90 },
-      { name: "XAMPP", level: 85 },
-      { name: "Postman", level: 80 },
-    ],
-  },
-];
-
-const softSkills = [
-  "Analytical Thinking",
-  "Problem Solving",
-  "Debugging",
-  "Team Collaboration",
-  "Effective Communication",
-  "Time Management",
-  "Attention to Detail",
-  "Adaptability",
-  "Continuous Learning",
-  "Creativity",
-  "Accountability"
-];
+import { certifications, languageFluency, skillCategories, softSkills } from "@/content/site-data";
 
 const Skills = () => {
   return (
@@ -145,11 +89,7 @@ const Skills = () => {
               <span className="text-primary">Languages</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { language: "Tamil", level: "Native" },
-                { language: "English", level: "Fluent" },
-                { language: "Sinhala", level: "Good" },
-              ].map((lang, index) => (
+              {languageFluency.map((lang, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -174,16 +114,7 @@ const Skills = () => {
               <span className="text-primary">Certifications</span>
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  title: "Responsive Web Design",
-                  issuer: "FreeCodeCamp",
-                },
-                {
-                  title: "Programming for Everybody",
-                  issuer: "Getting Started with Python",
-                },
-              ].map((cert, index) => (
+              {certifications.map((cert, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.9 }}

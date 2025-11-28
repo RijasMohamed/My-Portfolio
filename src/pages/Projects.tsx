@@ -1,38 +1,8 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { Github } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
-
-const projects = [
-  {
-    title: "E-Commerce Platform",
-    description: "Designed and developed a fully functional e-commerce web application with user authentication, product listings, and shopping cart functionality. Implemented secure RESTful APIs and integrated MongoDB for efficient data management.",
-    tech: ["MongoDB", "Express.js", "React.js", "Node.js", "Bootstrap"],
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
-    github: "https://github.com/Rijas-Mohamed",
-    features: [
-      "User authentication & authorization",
-      "Product listing & search",
-      "Shopping cart functionality",
-      "Secure payment processing",
-      "Order management system"
-    ]
-  },
-  {
-    title: "Hotel Management System",
-    description: "Built a comprehensive full-stack hotel management system featuring room management, guest tracking, and booking modules. Designed a responsive UI with Bootstrap and implemented real-time analytics dashboard using Chart.js.",
-    tech: ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap", "Chart.js"],
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop",
-    github: "https://github.com/Rijas-Mohamed",
-    features: [
-      "Room & guest management",
-      "Booking system",
-      "Real-time dashboard",
-      "MySQL database optimization",
-      "Responsive design"
-    ]
-  },
-];
+import { projectShowcase } from "@/content/site-data";
 
 const Projects = () => {
   return (
@@ -50,7 +20,7 @@ const Projects = () => {
         </AnimatedSection>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {projects.map((project, index) => (
+          {projectShowcase.map((project, index) => (
             <AnimatedSection key={index} delay={index * 0.2}>
               <motion.div
                 whileHover={{ y: -5 }}
@@ -61,6 +31,7 @@ const Projects = () => {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
                 </div>
