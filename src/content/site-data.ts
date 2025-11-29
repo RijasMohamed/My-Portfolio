@@ -35,7 +35,7 @@ export type SocialLink = {
 };
 
 export const socialLinks: SocialLink[] = [
-  { icon: Github, label: "GitHub", href: "https://github.com/Rijas-Mohamed" },
+  { icon: Github, label: "GitHub", href: "https://github.com/RijasMohamed" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/rijas-mohamed" },
   { icon: Mail, label: "Email", href: "mailto:rijas2244@gmail.com" },
 ];
@@ -117,8 +117,8 @@ export const skillCategories: SkillCategory[] = [
     icon: Globe,
     skills: [
       { name: "React.js", level: 85 },
-      { name: "Node.js", level: 80 },
-      { name: "Express.js", level: 80 },
+      { name: "Node.js", level: 50 },
+      { name: "Express.js", level: 50 },
       { name: "Bootstrap", level: 85 },
     ],
   },

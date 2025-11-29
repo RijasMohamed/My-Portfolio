@@ -15,8 +15,10 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [isSending, setIsSending] = useState(false);
+  const emailContact = contactInfo.find((info) => info.label === "Email");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     // Basic validation
@@ -29,14 +31,30 @@ const Contact = () => {
       return;
     }
 
-    // Success message
+    if (!emailContact) {
+      toast({
+        title: "Email not configured",
+        description: "Please provide a contact email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSending(true);
+
+    const subject = `Portfolio inquiry from ${formData.name}`;
+    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`;
+    const mailtoUrl = `${emailContact.href.split("?")[0]}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoUrl;
+
     toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon!",
+      title: "Message drafted",
+      description: "Your email client just opened with the details pre-filled.",
     });
 
-    // Reset form
     setFormData({ name: "", email: "", message: "" });
+    setIsSending(false);
   };
 
   const profileLinks = socialLinks.filter((link) => link.label !== "Email");
@@ -104,8 +122,8 @@ const Contact = () => {
                 />
               </div>
 
-              <Button type="submit" size="lg" className="w-full group">
-                Send Message
+              <Button type="submit" size="lg" className="w-full group" disabled={isSending}>
+                {isSending ? "Opening Mail..." : "Send Message"}
                 <Send className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </Button>
             </motion.form>
