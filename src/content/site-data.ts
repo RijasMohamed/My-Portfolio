@@ -36,7 +36,7 @@ export type SocialLink = {
 
 export const socialLinks: SocialLink[] = [
   { icon: Github, label: "GitHub", href: "https://github.com/RijasMohamed" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/rijas-mohamed" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/rijasmohamed/" },
   { icon: Mail, label: "Email", href: "mailto:rijas2244@gmail.com" },
 ];
 
@@ -68,7 +68,7 @@ export const projectShowcase: ProjectShowcase[] = [
       "Designed and developed a fully functional e-commerce web application with user authentication, product listings, and shopping cart functionality. Implemented secure RESTful APIs and integrated MongoDB for efficient data management.",
     tech: ["MongoDB", "Express.js", "React.js", "Node.js", "Bootstrap"],
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
-    github: "https://github.com/Rijas-Mohamed",
+    github: "https://github.com/RijasMohamed",
     features: [
       "User authentication & authorization",
       "Product listing & search",
@@ -83,7 +83,7 @@ export const projectShowcase: ProjectShowcase[] = [
       "Built a comprehensive full-stack hotel management system featuring room management, guest tracking, and booking modules. Designed a responsive UI with Bootstrap and implemented real-time analytics dashboard using Chart.js.",
     tech: ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap", "Chart.js"],
     image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop",
-    github: "https://github.com/Rijas-Mohamed",
+    github: "https://github.com/RijasMohamed",
     features: [
       "Room & guest management",
       "Booking system",
@@ -170,20 +170,20 @@ export const certifications = [
 export const profileCards = [
   {
     name: "GitHub",
-    username: "@Rijas-Mohamed",
+    username: "@RijasMohamed",
     stats: "Active repositories",
     description: "View my projects and contributions",
     color: "from-gray-700 to-gray-900",
-    link: "https://github.com/Rijas-Mohamed",
+    link: "https://github.com/RijasMohamed",
     icon: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
   },
   {
     name: "LinkedIn",
-    username: "@rijas-mohamed",
+    username: "@rijasmohamed",
     stats: "Professional network",
     description: "Connect with me professionally",
     color: "from-blue-600 to-blue-800",
-    link: "https://linkedin.com/in/rijas-mohamed",
+    link: "https://www.linkedin.com/in/rijasmohamed/",
     icon: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
   },
 ];
@@ -226,6 +226,6 @@ export const volunteeringHighlights = [
 export const resumeContactDetails = [
   { label: "Email", display: "rijas2244@gmail.com", href: "mailto:rijas2244@gmail.com" },
   { label: "Phone", display: "+94 71 68 18 679", href: "tel:+94716818679" },
-  { label: "LinkedIn", display: "linkedin.com/in/rijas-mohamed", href: "https://linkedin.com/in/rijas-mohamed" },
-  { label: "GitHub", display: "github.com/Rijas-Mohamed", href: "https://github.com/Rijas-Mohamed" },
+  { label: "LinkedIn", display: "www.linkedin.com/in/rijasmohamed/", href: "https://www.linkedin.com/in/rijasmohamed/" },
+  { label: "GitHub", display: "github.com/RijasMohamed", href: "https://github.com/RijasMohamed" },
 ];
