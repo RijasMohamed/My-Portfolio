@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Download, FileText } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { heroStats, opportunityHighlights, socialLinks } from "@/content/site-data";
@@ -33,7 +33,7 @@ const Hero = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                IT Undergraduate & Software Developer
+                Software Engineer Intern
               </motion.p>
 
               <motion.p
@@ -42,8 +42,11 @@ const Hero = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
-                Third-year IT student with hands-on experience in full-stack development. 
-                Passionate about building modern web applications using React, Node.js, and MongoDB.
+                Final-year IT undergraduate passionate about software engineering, with hands-on experience building 
+                frontend and full-stack web applications using React.js, JavaScript, and the MERN stack. Strong foundation 
+                in OOP, DSA, and software engineering principles, plus practical experience across MVC architecture, REST 
+                APIs, and Agile workflows. Actively seeking a software engineering internship to contribute to real-world 
+                projects, enhance technical skills, and deliver impactful solutions.
               </motion.p>
             </motion.div>
 
@@ -101,8 +104,13 @@ const Hero = () => {
           >
             <div className="bg-card border border-border rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
               <div className="space-y-6">
-                <div className="w-32 h-32 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
-                  <FileText className="w-16 h-16 text-primary" />
+                <div className="mx-auto h-40 w-40 md:h-48 md:w-48 rounded-full border-4 border-primary/20 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 overflow-hidden shadow-lg">
+                  <img
+                    src="/profile/profile.jpeg"
+                    alt="Portrait of Rijas Mohamed"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
                 
                 <div className="text-center space-y-2">
@@ -131,10 +139,10 @@ const Hero = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-8">About Me</h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed text-center mb-12">
-              I'm a third-year IT undergraduate at the University of Jaffna with a strong interest in 
-              software engineering. Through multiple projects, I've gained hands-on experience in building 
-              full-stack applications, working with modern web technologies, and solving real-world problems 
-              through code.
+              I'm a final-year IT undergraduate at the University of Jaffna, passionate about software engineering and 
+              modern product development. I enjoy building frontend and full-stack solutions with React.js, JavaScript, 
+              and the MERN stack while applying solid OOP, DSA, and software engineering principles to solve real-world 
+              problems.
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">

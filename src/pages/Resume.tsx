@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { Download, FileText, Briefcase, GraduationCap, Award, Users } from "lucide-react";
+import { Download, FileText, Briefcase, GraduationCap, Award, Users, Wrench } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import {
   certifications,
+  resumeSkillsAndTechnologies,
   resumeContactDetails,
   resumeProjects,
   volunteeringHighlights,
@@ -29,9 +30,11 @@ const Resume = () => {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
               Download my complete professional resume
             </p>
-            <Button size="lg" className="group">
-              <Download className="mr-2 group-hover:animate-bounce" size={20} />
-              Download PDF
+            <Button size="lg" className="group" asChild>
+              <a href="/resume/rijas-mohamed.pdf" download>
+                <Download className="mr-2 group-hover:animate-bounce" size={20} />
+                Download PDF
+              </a>
             </Button>
           </div>
         </AnimatedSection>
@@ -42,16 +45,38 @@ const Resume = () => {
             <div className="bg-card p-8 rounded-xl border border-border shadow-lg">
               <h2 className="text-3xl font-bold mb-4 text-primary">Summary</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Third-year IT undergraduate with a strong interest in software engineering and hands-on 
-                experience from multiple projects. Actively seeking a software engineering internship to 
-                apply my knowledge, contribute to real-world development teams, and gain valuable industry 
-                experience while continuing to learn and grow.
+                Final-year IT undergraduate passionate about software engineering, with hands-on experience building 
+                frontend and full-stack web applications using React.js, JavaScript, and the MERN stack. Strong foundation 
+                in OOP, DSA, and software engineering principles with practical exposure to MVC architecture, REST APIs, and 
+                Agile workflows. Actively seeking a software engineering internship to contribute to real-world projects, 
+                sharpen technical skills, and deliver impactful solutions.
               </p>
             </div>
           </AnimatedSection>
 
-          {/* Education */}
+          {/* Skills and Technologies */}
           <AnimatedSection delay={0.2}>
+            <div className="bg-card p-8 rounded-xl border border-border shadow-lg">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <Wrench className="w-6 h-6 text-primary" />
+                </div>
+                <h2 className="text-3xl font-bold text-primary">Skills & Technologies</h2>
+              </div>
+              <p className="text-sm text-muted-foreground mb-6">Aug 2022 – Present</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                {resumeSkillsAndTechnologies.map((group) => (
+                  <div key={group.title} className="bg-muted/40 rounded-lg p-4 border border-border">
+                    <p className="font-semibold text-foreground mb-2">{group.title}</p>
+                    <p className="text-muted-foreground">{group.items.join(", ")}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Education */}
+          <AnimatedSection delay={0.3}>
             <div className="bg-card p-8 rounded-xl border border-border shadow-lg">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 bg-primary/10 rounded-lg">
@@ -66,16 +91,22 @@ const Resume = () => {
                 viewport={{ once: true }}
                 className="border-l-2 border-primary pl-6"
               >
-                <h3 className="text-xl font-bold">Bachelor of Information Communication Technology (Hons)</h3>
-                <p className="text-primary font-medium">University of Jaffna (Vavuniya Campus)</p>
-                <p className="text-sm text-muted-foreground mb-2">August 2022 – Present</p>
-                <p className="text-muted-foreground">Currently in third year, focusing on software engineering and web development</p>
+                <h3 className="text-xl font-bold">
+                  Bachelor of Information Communication Technology (Hons) (Reading)
+                </h3>
+                <p className="text-primary font-medium">
+                  University of Vavuniya, Sri Lanka | CGPA - 3.35
+                </p>
+                <p className="text-sm text-muted-foreground mb-2">Aug 2022 – Present</p>
+                <p className="text-muted-foreground">
+                  Currently in final year, focusing on software engineering and web development
+                </p>
               </motion.div>
             </div>
           </AnimatedSection>
 
           {/* Projects */}
-          <AnimatedSection delay={0.3}>
+          <AnimatedSection delay={0.4}>
             <div className="bg-card p-8 rounded-xl border border-border shadow-lg">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 bg-primary/10 rounded-lg">
@@ -110,7 +141,7 @@ const Resume = () => {
           </AnimatedSection>
 
           {/* Certifications */}
-          <AnimatedSection delay={0.4}>
+          <AnimatedSection delay={0.5}>
             <div className="bg-card p-8 rounded-xl border border-border shadow-lg">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 bg-primary/10 rounded-lg">
@@ -131,6 +162,16 @@ const Resume = () => {
                     className="bg-muted p-4 rounded-lg border border-border"
                   >
                     <p className="font-medium">{`${cert.title} – ${cert.issuer}`}</p>
+                    {(cert.image || cert.link) && (
+                      <a
+                        href={cert.image ?? cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-primary font-medium hover:underline"
+                      >
+                        View Credential
+                      </a>
+                    )}
                   </motion.div>
                 ))}
               </div>
@@ -138,7 +179,7 @@ const Resume = () => {
           </AnimatedSection>
 
           {/* Volunteering */}
-          <AnimatedSection delay={0.5}>
+          <AnimatedSection delay={0.6}>
             <div className="bg-card p-8 rounded-xl border border-border shadow-lg">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 bg-primary/10 rounded-lg">
@@ -166,7 +207,7 @@ const Resume = () => {
           </AnimatedSection>
 
           {/* Contact Info */}
-          <AnimatedSection delay={0.6}>
+          <AnimatedSection delay={0.7}>
             <div className="bg-card p-8 rounded-xl border border-border shadow-lg text-center">
               <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
               <div className="space-y-2 text-muted-foreground">

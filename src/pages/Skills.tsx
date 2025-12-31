@@ -126,6 +126,16 @@ const Skills = () => {
                 >
                   <h3 className="font-bold text-lg mb-2">{cert.title}</h3>
                   <p className="text-sm text-muted-foreground">{cert.issuer}</p>
+                  {(cert.image || cert.link) && (
+                    <a
+                      href={cert.image ?? cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex text-sm font-medium text-primary hover:underline"
+                    >
+                      View Credential
+                    </a>
+                  )}
                 </motion.div>
               ))}
             </div>
